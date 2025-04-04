@@ -1,0 +1,15 @@
+﻿  FctCalculTrigo.c
+C:\B_Z dossier\Prog\PROG_PRJ1_S2_SolusEtudiants\BZI\Project1_S2_BZ\Project1_S2_BZ\FctCalculTrigo.c(201,42): warning C4244: '=' : conversion de 'double' en 'unsigned char', perte possible de données
+C:\B_Z dossier\Prog\PROG_PRJ1_S2_SolusEtudiants\BZI\Project1_S2_BZ\Project1_S2_BZ\FctCalculTrigo.c(207,44): warning C4244: '=' : conversion de 'double' en 'unsigned char', perte possible de données
+C:\B_Z dossier\Prog\PROG_PRJ1_S2_SolusEtudiants\BZI\Project1_S2_BZ\Project1_S2_BZ\FctCalculTrigo.c(213,40): warning C4244: '=' : conversion de 'double' en 'unsigned char', perte possible de données
+C:\B_Z dossier\Prog\PROG_PRJ1_S2_SolusEtudiants\BZI\Project1_S2_BZ\Project1_S2_BZ\FctCalculTrigo.c(233,76): warning C4244: '=' : conversion de 'double' en 'unsigned char', perte possible de données
+C:\B_Z dossier\Prog\PROG_PRJ1_S2_SolusEtudiants\BZI\Project1_S2_BZ\Project1_S2_BZ\FctCalculTrigo.c(236,74): warning C4244: '=' : conversion de 'double' en 'unsigned char', perte possible de données
+C:\B_Z dossier\Prog\PROG_PRJ1_S2_SolusEtudiants\BZI\Project1_S2_BZ\Project1_S2_BZ\FctCalculTrigo.c(243,81): warning C4244: '=' : conversion de 'double' en 'unsigned char', perte possible de données
+C:\B_Z dossier\Prog\PROG_PRJ1_S2_SolusEtudiants\BZI\Project1_S2_BZ\Project1_S2_BZ\FctCalculTrigo.c(245,77): warning C4244: '=' : conversion de 'double' en 'unsigned char', perte possible de données
+C:\B_Z dossier\Prog\PROG_PRJ1_S2_SolusEtudiants\BZI\Project1_S2_BZ\Project1_S2_BZ\FctCalculTrigo.c(252,79): warning C4244: '=' : conversion de 'double' en 'unsigned char', perte possible de données
+C:\B_Z dossier\Prog\PROG_PRJ1_S2_SolusEtudiants\BZI\Project1_S2_BZ\Project1_S2_BZ\FctCalculTrigo.c(255,77): warning C4244: '=' : conversion de 'double' en 'unsigned char', perte possible de données
+  mainProjet1_s2.c
+C:\B_Z dossier\Prog\PROG_PRJ1_S2_SolusEtudiants\BZI\Project1_S2_BZ\Project1_S2_BZ\mainProjet1_s2.c(53,9): warning C4477: 'printf' : la chaîne de format '%d' nécessite un argument de type 'int', mais l'argument variadique 1 est de type 'size_t'
+C:\B_Z dossier\Prog\PROG_PRJ1_S2_SolusEtudiants\BZI\Project1_S2_BZ\Project1_S2_BZ\mainProjet1_s2.c(53,9): message : utilisez '%zd' dans la chaîne de format
+  Génération de code en cours...
+  Project1_S2_BZ.vcxproj -> C:\B_Z dossier\Prog\PROG_PRJ1_S2_SolusEtudiants\BZI\Project1_S2_BZ\x64\Debug\Project1_S2_BZ.exe
