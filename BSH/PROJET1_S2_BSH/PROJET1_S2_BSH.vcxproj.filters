@@ -24,7 +24,7 @@
       <Filter>Fichiers sources</Filter>
     </ClCompile>
     <ClCompile Include="FctCalculTrigo.c">
-      <Filter>Fichiers sources</Filter>
+      <Filter>Fichiers d%27en-tête</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

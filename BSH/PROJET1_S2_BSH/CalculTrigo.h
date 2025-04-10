@@ -1,27 +1,27 @@
 //-----------------------------------------------------------------------------------//
 // Nom du projet 		: Projet 2 - Calculs Trigo
 // Nom du fichier 		: CalculsTrigo.h
-// Date de création 	: 14.02.2024
+// Date de crï¿½ation 	: 14.02.2024
 // Date de modification : 14.02.2024
 //
 // Auteur 				: Philou (Ph. Bovey)
 //
 // Description          : 
 //
-// Remarques			: voir donnee de l'épreuve            
+// Remarques			: voir donnee de l'ï¿½preuve            
 //----------------------------------------------------------------------------------//
 #ifndef CALCUL_TRIGO_H
 #define CALCUL_TRIGO_H
 
-//-- déclaration -> définition globales --// 
+//-- dï¿½claration -> dï¿½finition globales --// 
 #define NB_CHOIX_MAX 2
-//-- déclaration -> énumération globales --// 
+//-- dï¿½claration -> ï¿½numï¿½ration globales --// 
 typedef enum { cote, angle } e_choixCoteAngle;
 typedef enum { adj = 1, hyp, opp } e_choixCote;
 typedef enum { alpha = 1, beta } e_choixAngle;
 typedef enum { ok, nok} e_validation;
 
-//-- déclaration -> structure globales --// 
+//-- dï¿½claration -> structure globales --// 
 //--> structure 1
 typedef struct {
 	uint8_t adjacent;
@@ -31,22 +31,22 @@ typedef struct {
 //--> structure 2
 typedef struct {
 	float tb_Angle[4];
-	str_coteTriangle triangle_s;
-	struct {
+	str_coteTriangle triangle_s; 
+	struct {		
 		uint8_t air;
-		uint8_t perimetre
+		uint16_t perimetre;
 	}Str_AetP;
 }str_triangleRectangle;
 
-//-- déclaration de prototype --// 
-	//-> tous les champs de la structure seront mis à zéro
-	//-> conversion angle degré -> en radian 
-	//-> conversion angle radian -> en degré 
-	//-> calculer les différents segments du triangle
-	//-> calculer les différents angles 
-e_validation InitialiserStructure(int *pt_strTiangle, str_triangleRectangle);
-void Conversion_DegRad(int* pt_strTiangle, str_triangleRectangle);
-void Conversion_RadDeg(int* pt_strTiangle, str_triangleRectangle);
-e_validation CalculerAllAngles(int *pt_strTiangle, str_triangleRectangle);
-e_validation CalculerLongueurSegment(int* pt_strTiangle, str_triangleRectangle);
+//-- dï¿½claration de prototype --// 
+	//-> tous les champs de la structure seront mis ï¿½ zï¿½ro
+	//-> conversion angle degrï¿½ -> en radian 
+	//-> conversion angle radian -> en degrï¿½ 
+	//-> calculer les diffï¿½rents segments du triangle
+	//-> calculer les diffï¿½rents angles 
+e_validation InitialiserStructure(str_triangleRectangle* pt_strTriangle);
+void Conversion_DegRad(str_triangleRectangle* pt_strTriangle);
+void Conversion_RadDeg(str_triangleRectangle* pt_strTriangle);
+e_validation CalculerAllAngles(str_triangleRectangle* pt_strTriangle);
+e_validation CalculerLongueurSegment(str_triangleRectangle* pt_strTriangle);
 #endif // !CALCUL_TRIGO_H
