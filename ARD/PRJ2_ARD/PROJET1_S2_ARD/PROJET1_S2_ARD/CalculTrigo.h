@@ -25,15 +25,32 @@ typedef enum { ok, nok} e_validation;
 
 //-- déclaration -> structure globales --// 
 //--> structure 1
-
+typedef struct {
+	unsigned char adjacent;
+	unsigned char hypotenuse;
+	unsigned char oppose;
+}str_coteTriangle;
 //--> structure 2
-
+typedef struct {
+	float  tb_Angle[4];
+	str_coteTriangle triangle_s;
+	struct Str_AetP {
+		short air;
+		short perimetre;
+	};
+}str_triangleRectangle;
 
 //-- déclaration de prototype --// 
 	//-> tous les champs de la structure seront mis à zéro
+e_validation Initialiserstructure(str_triangleRectangle* pointeur_strTriangle);
 	//-> conversion angle degré -> en radian 
+void Conversion_DegRad(str_triangleRectangle* pointeur_strTriangle);
 	//-> conversion angle radian -> en degré 
+void Conversion_RadDeg(str_triangleRectangle* pointeur_strTriangle);
 	//-> calculer les différents segments du triangle
+e_validation CalculerLongueurSegment(str_triangleRectangle* pointeur_strTriangle);
 	//-> calculer les différents angles 
+e_validation CalculerAllAngles(str_triangleRectangle* pointeur_strTriangle);
+
 
 #endif // !CALCUL_TRIGO_H
