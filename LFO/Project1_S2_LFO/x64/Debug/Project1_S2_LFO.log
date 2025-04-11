@@ -1,0 +1,13 @@
+﻿  FctCalculTrigo.c
+C:\LFO\GIT_PROG\PROG__RESULTAS_ETUDIANTS_TEST2_SLO1_24_25\LFO\Project1_S2_LFO\FctCalculTrigo.c(87,70): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
+C:\LFO\GIT_PROG\PROG__RESULTAS_ETUDIANTS_TEST2_SLO1_24_25\LFO\Project1_S2_LFO\FctCalculTrigo.c(91,70): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
+C:\LFO\GIT_PROG\PROG__RESULTAS_ETUDIANTS_TEST2_SLO1_24_25\LFO\Project1_S2_LFO\FctCalculTrigo.c(108,69): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
+C:\LFO\GIT_PROG\PROG__RESULTAS_ETUDIANTS_TEST2_SLO1_24_25\LFO\Project1_S2_LFO\FctCalculTrigo.c(112,69): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
+C:\LFO\GIT_PROG\PROG__RESULTAS_ETUDIANTS_TEST2_SLO1_24_25\LFO\Project1_S2_LFO\FctCalculTrigo.c(213,76): warning C4244: '=' : conversion de 'double' en 'uint8_t', perte possible de données
+C:\LFO\GIT_PROG\PROG__RESULTAS_ETUDIANTS_TEST2_SLO1_24_25\LFO\Project1_S2_LFO\FctCalculTrigo.c(216,74): warning C4244: '=' : conversion de 'double' en 'uint8_t', perte possible de données
+C:\LFO\GIT_PROG\PROG__RESULTAS_ETUDIANTS_TEST2_SLO1_24_25\LFO\Project1_S2_LFO\FctCalculTrigo.c(221,81): warning C4244: '=' : conversion de 'double' en 'uint8_t', perte possible de données
+C:\LFO\GIT_PROG\PROG__RESULTAS_ETUDIANTS_TEST2_SLO1_24_25\LFO\Project1_S2_LFO\FctCalculTrigo.c(224,74): warning C4244: '=' : conversion de 'double' en 'uint8_t', perte possible de données
+C:\LFO\GIT_PROG\PROG__RESULTAS_ETUDIANTS_TEST2_SLO1_24_25\LFO\Project1_S2_LFO\FctCalculTrigo.c(229,79): warning C4244: '=' : conversion de 'double' en 'uint8_t', perte possible de données
+C:\LFO\GIT_PROG\PROG__RESULTAS_ETUDIANTS_TEST2_SLO1_24_25\LFO\Project1_S2_LFO\FctCalculTrigo.c(232,77): warning C4244: '=' : conversion de 'double' en 'uint8_t', perte possible de données
+C:\LFO\GIT_PROG\PROG__RESULTAS_ETUDIANTS_TEST2_SLO1_24_25\LFO\Project1_S2_LFO\FctCalculTrigo.c(196,10): warning C4101: 'i' : variable locale non référencée
+  Project1_S2_LFO.vcxproj -> C:\LFO\GIT_PROG\PROG__RESULTAS_ETUDIANTS_TEST2_SLO1_24_25\LFO\Project1_S2_LFO\x64\Debug\Project1_S2_LFO.exe

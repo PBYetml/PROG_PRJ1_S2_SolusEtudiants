@@ -52,7 +52,20 @@ e_validation InitialiserStructure(str_triangleRectangle* pt_strTriangle)
 	pt_strTriangle->perimetre = 0;
 
 	//-- validation -> de la fct --// 
-	checkFct = ok;
+	if (
+		(pt_strTriangle->tb_Angle[0] == 0) &&
+		(pt_strTriangle->tb_Angle[1] == 0) &&
+		(pt_strTriangle->tb_Angle[2] == 0) &&
+		(pt_strTriangle->tb_Angle[3] == 0) &&
+		(pt_strTriangle->triangle_s.adjacent == 0) &&
+		(pt_strTriangle->triangle_s.hypotenuse == 0) &&
+		(pt_strTriangle->triangle_s.oppose == 0) &&
+		(pt_strTriangle->air == 0) &&
+		(pt_strTriangle->perimetre == 0)
+		)
+	{
+		checkFct = ok;
+	}
 
 	//-- valeur à retourner --// 
 	return checkFct;
@@ -70,11 +83,11 @@ void Conversion_DegRad(str_triangleRectangle* pt_strTriangle)
 {
 	//-- test si angle à convertir --//
 	//--> alpha 
-	if (pt_strTriangle->tb_Angle[0] != (float)0.0) 
+	if (pt_strTriangle->tb_Angle[0] != 0) 
 		pt_strTriangle->tb_Angle[1] = (pt_strTriangle->tb_Angle[0] * M_PI) / 180;
 
 	//--> beta 
-	if (pt_strTriangle->tb_Angle[2] != (float)0.0) 
+	else if (pt_strTriangle->tb_Angle[2] != 0) 
 		pt_strTriangle->tb_Angle[3] = (pt_strTriangle->tb_Angle[2] * M_PI) / 180;
 
 }
@@ -91,11 +104,11 @@ void Conversion_RadDeg(str_triangleRectangle* pt_strTriangle)
 {
 	//-- test si angle à convertir --//
 	//--> alpha 
-	if (pt_strTriangle->tb_Angle[1] != (float)0.0)
+	if (pt_strTriangle->tb_Angle[1] != 0)
 		pt_strTriangle->tb_Angle[0] = (pt_strTriangle->tb_Angle[1] * 180) / M_PI;
 
 	//--> beta 
-	if (pt_strTriangle->tb_Angle[3] != (float)0.0)
+	else if (pt_strTriangle->tb_Angle[3] != 0)
 		pt_strTriangle->tb_Angle[2] = (pt_strTriangle->tb_Angle[3] * 180) / M_PI;
 
 }
@@ -115,13 +128,13 @@ e_validation CalculerAllAngles(str_triangleRectangle* pt_strTriangle)
 	//-- test si un angle a été définit alpha ou beta 
 	if ((pt_strTriangle->tb_Angle[0]) || (pt_strTriangle->tb_Angle[2])) {
 		//-- calcul de alpha 
-		if (pt_strTriangle->tb_Angle[2])
-			pt_strTriangle->tb_Angle[0] = 180 - (pt_strTriangle->tb_Angle[2] + 90);
-			Conversion_DegRad(pt_strTriangle);	//-- conversion Degré - Radian 
+		if (pt_strTriangle->tb_Angle[2]) 
+			pt_strTriangle->tb_Angle[0] = 90 - (pt_strTriangle->tb_Angle[2]);
 
 		//-- calcul de beta
-		if (pt_strTriangle->tb_Angle[0])
-			pt_strTriangle->tb_Angle[2] = 180 - (pt_strTriangle->tb_Angle[0] + 90);
+		else if (pt_strTriangle->tb_Angle[0])
+			pt_strTriangle->tb_Angle[2] = 90 - (pt_strTriangle->tb_Angle[0]);
+
 			Conversion_DegRad(pt_strTriangle);	//-- conversion Degré - Radian 
 	}
 	else {
@@ -129,27 +142,29 @@ e_validation CalculerAllAngles(str_triangleRectangle* pt_strTriangle)
 
 			//-- si coté non défini -> hypothénuse -> fonction trigo inversée arctan 
 		if (pt_strTriangle->triangle_s.hypotenuse == 0) {
-			pt_strTriangle->tb_Angle[0] = (float)atan(((double)(pt_strTriangle->triangle_s.adjacent) / (pt_strTriangle->triangle_s.oppose)));
-			pt_strTriangle->tb_Angle[2] = 180 - (pt_strTriangle->tb_Angle[0] + 90);
+			pt_strTriangle->tb_Angle[1] = (float)atan(((double)(pt_strTriangle->triangle_s.adjacent) / (pt_strTriangle->triangle_s.oppose)));
 			//-- conversion Radian - Degré 
-			Conversion_DegRad(pt_strTriangle);
+			Conversion_RadDeg(pt_strTriangle);
+			pt_strTriangle->tb_Angle[2] = 90 - (pt_strTriangle->tb_Angle[0]);
+			
 		}
 			//-- si coté non défini -> opposé -> fonction trigo inversée arccos
-		if (pt_strTriangle->triangle_s.oppose == 0) {
-			pt_strTriangle->tb_Angle[0] = (float)acos(((double)(pt_strTriangle->triangle_s.oppose) / (pt_strTriangle->triangle_s.hypotenuse)));
-			pt_strTriangle->tb_Angle[2] = 180 - (pt_strTriangle->tb_Angle[0] + 90);
+		else if (pt_strTriangle->triangle_s.oppose == 0) {
+			pt_strTriangle->tb_Angle[1] = (float)acos(((double)(pt_strTriangle->triangle_s.oppose) / (pt_strTriangle->triangle_s.hypotenuse)));
 			//-- conversion Radian - Degré 
-			Conversion_DegRad(pt_strTriangle);
+			Conversion_RadDeg(pt_strTriangle);
+			pt_strTriangle->tb_Angle[2] = 90 - (pt_strTriangle->tb_Angle[0]);
 		}
 			//-- si coté non défini -> adjacent -> fonction trigo inversée arcsin
-		if (pt_strTriangle->triangle_s.adjacent == 0) {
-			pt_strTriangle->tb_Angle[0] = (float)asin(((double)(pt_strTriangle->triangle_s.adjacent) / (pt_strTriangle->triangle_s.hypotenuse)));
-			pt_strTriangle->tb_Angle[2] = 180 - (pt_strTriangle->tb_Angle[0] + 90);
+		else if (pt_strTriangle->triangle_s.adjacent == 0) {
+			pt_strTriangle->tb_Angle[1] = (float)asin(((double)(pt_strTriangle->triangle_s.adjacent) / (pt_strTriangle->triangle_s.hypotenuse)));
 			//-- conversion Radian - Degré 
-			Conversion_DegRad(pt_strTriangle);
+			Conversion_RadDeg(pt_strTriangle);
+			pt_strTriangle->tb_Angle[2] = 90 - (pt_strTriangle->tb_Angle[0]);
 		}
 
 	}
+
 		
 	//-- test si tous les champs sont remplis 
 	for (i = 0; i < TAILLE_TB_ANGLE; i++)
@@ -178,59 +193,53 @@ e_validation CalculerAllAngles(str_triangleRectangle* pt_strTriangle)
  ----------------------------------------------------------------------------------*/
 e_validation CalculerLongueurSegment(str_triangleRectangle* pt_strTriangle)
 {
+	uint8_t i;
 	e_validation checkFct = nok;
-
-	//-- test -> si pas aucun angle définit 
-
-		//-- test si la valeur à calculer est à zéro 
-
-			//-- calculer segment adjacent --//
-
-			//-- calculer segment hypothénuse --// 
-
-			//-- calculer segment opposé 
-
-	//-- test si un angle a été définit alpha ou beta 
-
-		//-- test si l'angle alpha a été inséré 
-
-			//-- conversion de alpha -> ° -> radian 
-
-
-			//-- test si sgement hypothénuse entré 
-
-				//Calcul -> cos(alpha) = adj / hyp => ... 
-
-
-				//Calcul -> sin(alpha) = opp / hyp => ...
-
-			//-- test si sgement adjacent entré 
-
-				//Calcul -> cos(alpha) = adj/hyp => ...
-
-
-				//Calcul -> tan(alpha) = opp/adj => ...
-
-			//-- test si sgement opposé entré  
-
-				//Calcul -> sin(alpha) = opp/hyp => ...
-
-
-				//Calcul -> tan(alpha) = opp/adj => ... 
 
 
 	//-- calcul de tous les angles -> appel de fct --// 
+	CalculerAllAngles(pt_strTriangle);
 
+	//-- test si un angle a été définit alpha ou beta 
+	if ((pt_strTriangle->tb_Angle[0]) || (pt_strTriangle->tb_Angle[2])) {
+		//-- test si l'angle alpha a été inséré 
+		if (pt_strTriangle->tb_Angle[0]) {
+			//-- conversion de alpha -> ° -> radian 
+			Conversion_DegRad(pt_strTriangle);	//-- conversion Degré - Radian 
+
+			//-- test si sgement hypothénuse entré 
+			if (pt_strTriangle->triangle_s.hypotenuse) {
+				//Calcul -> cos(alpha) = adj / hyp => ... 
+				pt_strTriangle->triangle_s.adjacent = cos(pt_strTriangle->tb_Angle[1]) * pt_strTriangle->triangle_s.hypotenuse;
+
+				//Calcul -> sin(alpha) = opp / hyp => ...
+				pt_strTriangle->triangle_s.oppose = sin(pt_strTriangle->tb_Angle[1]) * pt_strTriangle->triangle_s.hypotenuse;
+			}
+			//-- test si sgement adjacent entré 
+			else if (pt_strTriangle->triangle_s.adjacent) {
+				//Calcul -> cos(alpha) = adj/hyp => ...
+				pt_strTriangle->triangle_s.hypotenuse = pt_strTriangle->triangle_s.adjacent / cos(pt_strTriangle->tb_Angle[1]);
+
+				//Calcul -> tan(alpha) = opp/adj => ...
+				pt_strTriangle->triangle_s.oppose = tan(pt_strTriangle->tb_Angle[1]) * pt_strTriangle->triangle_s.adjacent;
+			}
+			//-- test si sgement opposé entré  
+			else if (pt_strTriangle->triangle_s.oppose) {
+				//Calcul -> sin(alpha) = opp/hyp => ...
+				pt_strTriangle->triangle_s.hypotenuse = pt_strTriangle->triangle_s.oppose / sin(pt_strTriangle->tb_Angle[1]);
+
+				//Calcul -> tan(alpha) = opp/adj => ...
+				pt_strTriangle->triangle_s.adjacent = pt_strTriangle->triangle_s.oppose / tan(pt_strTriangle->tb_Angle[1]);
+			}
+		}
+
+	}
+	
 
 	//-- check si la longeur des segments bien calculé 
+	if(pt_strTriangle->triangle_s.hypotenuse && pt_strTriangle->triangle_s.oppose && pt_strTriangle->triangle_s.adjacent)
+	checkFct = ok;
 
+	//-- retourne OK
 	return checkFct;
 }
-
-
-
-
-
-
-
-

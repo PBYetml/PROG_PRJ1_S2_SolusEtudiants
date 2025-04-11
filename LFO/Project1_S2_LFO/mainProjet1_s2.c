@@ -22,7 +22,7 @@
 
 
 //-- déclaration de constantes --// 
-const char* ptNOM_CANDIDAT = "Philou Solus"; 
+const char* ptNOM_CANDIDAT = "Luca_Ferreiro"; 
 const char VERSION_PROJET = 1; 
 const unsigned short ANNEE_TEST = 2025; 
 
@@ -50,11 +50,10 @@ void main()
 	printf("-- TEST n%02d - annee : %d - Nom Candidat : %s --\n", VERSION_PROJET, ANNEE_TEST, ptNOM_CANDIDAT); 
 
 	//-- msg -> taille structure -> A IMPLEMENTER --// 
-	//printf("\n-> taille en memoire de la structure triangle : [o] \n", );
+	printf("\n-> taille en memoire de la structure triangle : %d[o] \n", sizeof(triangle));
 	
 	//-- initialisation de la structure -> A IMPLEMENTER --//
 	testFct = InitialiserStructure(&triangle);
-
 	
 	//-- msg user & selection valeur --// 
 	//-- itération -> max 2 choix possible 
@@ -138,17 +137,17 @@ void main()
 	}
 
 	//-- appel de fct pour le calcul des segments -> A IMPLEMENTER
-	//testFct = ... 
+	testFct = CalculerLongueurSegment(&triangle);
 
 	//-- msg user - état calcul --// 
 	if (testFct == ok)
 	{
 		//-- Affichage à implémenter !!! 
-		printf("\n -> Resultats : longeur adjacent ");
-		printf("\n -> Resultats : longeur hypothenuse  ");
-		printf("\n -> Resultats : longeur oppose  ");
-		printf("\n -> Resultats : angle alpha ");
-		printf("\n -> Resultats : angle beta  ");
+		printf("\n -> Resultats : longeur adjacent %d", triangle.triangle_s.adjacent);
+		printf("\n -> Resultats : longeur hypothenuse %d", triangle.triangle_s.hypotenuse);
+		printf("\n -> Resultats : longeur oppose %d", triangle.triangle_s.oppose);
+		printf("\n -> Resultats : angle alpha %.2f", triangle.tb_Angle[0]);
+		printf("\n -> Resultats : angle beta  %.2f", triangle.tb_Angle[2]);
 	}
 	else
 		printf("\n -> erreur de calcul !!!"); 

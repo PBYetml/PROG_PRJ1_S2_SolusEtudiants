@@ -127,7 +127,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="CalculTrigo.cpp" />
     <ClCompile Include="FctCalculTrigo.c" />
     <ClCompile Include="mainProjet1_s2.c" />
   </ItemGroup>
