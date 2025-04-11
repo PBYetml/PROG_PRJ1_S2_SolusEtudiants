@@ -35,12 +35,12 @@ typedef struct
 //--> structure 2
 typedef struct
 {
-	double long tb_Angle[4];
+	float tb_Angle[4];
 	str_coteTriangle triangle_s;
 	struct Str_AetP
 	{
-		long air;
-		long perimetre;
+		short air;
+		char perimetre;
 	};
 
 
