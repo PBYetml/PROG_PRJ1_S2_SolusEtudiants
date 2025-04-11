@@ -15,6 +15,7 @@
 #include <stdint.h> 
 //-- déclaration -> définition globales --// 
 #define NB_CHOIX_MAX 2
+#define Moitie_Rond
 
 //-- déclaration -> énumération globales --// 
 typedef enum { cote, angle } e_choixCoteAngle;
@@ -25,15 +26,15 @@ typedef enum { ok, nok} e_validation;
 
 //-- déclaration -> structure globales --// 
 //--> structure 1
-struct str_coteTriangle
+typedef struct 
 {
 	uint8_t adjacent, hypotenuse, oppose;
-};
+}str_coteTriangle;
 //--> structure 2
-struct str_triangleRectangle
+typedef struct 
 {
-	double tb_Angle[4] = { 1, 3, 2, 4 };
-	struct str_coteTriangle triangle_s;
+	float tb_Angle[4];
+	str_coteTriangle triangle_s;
 
 	struct Str_AetP
 	{
@@ -42,18 +43,19 @@ struct str_triangleRectangle
 
 	}; 
 	
-};
+}str_triangleRectangle;
 
 //-- déclaration de prototype --// 
-	//-> tous les champs de la structure seront mis à zéro
-	//-> conversion angle degré -> en radian 
-int Conversion_DegRad(pt_strTriangle, str_triangleRectangle);
-	//-> conversion angle radian -> en degré 
-int Conversion_RadDeg(pt_strTriangle, str_triangleRectangle);
-	//-> calculer les différents segments du triangle
-int CalculerLongeurSegment(pt_strTriangle, str_triangleRectangle);
-	//-> calculer les différents angles 
-int CalculerAllAngles(pt_strTriangle, str_triangleRectangle);
+//-> tous les champs de la structure seront mis à zéro
+e_validation initialiserStructure(str_triangleRectangle* pt_strTriangle);
+//-> conversion angle degré -> en radian 
+void Conversion_DegRad(str_triangleRectangle* pt_strTriangle);
+//-> conversion angle radian -> en degré 
+void Conversion_RadDeg(str_triangleRectangle* pt_strTriangle);
+//-> calculer les différents segments du triangle
+e_validation CalculerLongeurSegment(str_triangleRectangle* pt_strTriangle);
+//-> calculer les différents angles 
+e_validation CalculerAllAngles(str_triangleRectangle* pt_strTriangle);
 
 
 #endif // !CALCUL_TRIGO_H

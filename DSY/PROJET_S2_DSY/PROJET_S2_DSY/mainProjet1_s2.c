@@ -45,21 +45,16 @@ void main()
 
 	//-- variable structure -> A IMPLEMENTER 
 	// triangle
-	float angleAlpha;
-	float angleBeta;
-	int LongeurH;
-	int LongeurO;
-	int LongeurA;
-	struct str_coteTriangle *ptr_str;
-	struct str_triangleRectangle* ptr_strTR;
+	str_triangleRectangle Triangle;
+	
 	//-- message utilisateur --// 
 	printf("-- TEST n%02d - annee : %d - Nom Candidat : %s --\n", VERSION_PROJET, ANNEE_TEST, ptNOM_CANDIDAT); 
 
 	//-- msg -> taille structure -> A IMPLEMENTER --// 
-	//printf("\n-> taille en memoire de la structure triangle : [o] \n", );
+	printf("\n-> taille en memoire de la structure triangle : %d [o] \n", sizeof(Triangle));
 	
 	//-- initialisation de la structure -> A IMPLEMENTER --//
-	
+	testFct = initialiserStructure(&Triangle);
 	
 	//-- msg user & selection valeur --// 
 	//-- itération -> max 2 choix possible 
@@ -93,18 +88,15 @@ void main()
 				//-> adjacent
 				if (choix_AHC == adj)
 					//MAJ variable triangle -> champs : adjacent -> 
-					ptr_str->adjacent = &longueurSegment;
+					Triangle.triangle_s.adjacent = longueurSegment;
 				//-> hypothénuse
 				else if (choix_AHC == hyp)
-				
-					ptr_str->hypotenuse = &longueurSegment;
-				
 					//MAJ variable triangle -> champs : hypthénuse -> A IMPLEMENTER
-					
+					Triangle.triangle_s.hypotenuse = longueurSegment;
 				//-> opposé 
 				else 
 					//MAJ variable triangle -> champs : opposé  -> A IMPLEMENTER
-					ptr_str->oppose = &longueurSegment;
+					Triangle.triangle_s.oppose = longueurSegment;
 
 
 				
@@ -131,10 +123,10 @@ void main()
 				//-- test de la sélection + maj structure triangle  
 				if (choix_AB == alpha)
 					//-- MAJ de l'angle Alpha -> case 0 -> A IMPLEMENTER
-					ptr_strTR->tb_Angle[0] = angle_deg;
+					Triangle.tb_Angle[0] = angle_deg;
 				else 
 					//-- MAJ de l'angle Beta -> case 2 -> A IMPLEMENTER
-					ptr_strTR->tb_Angle[2] = angle_deg;
+					Triangle.tb_Angle[2] = angle_deg;
 
 				//-- MAJ de nb de choix à disposition --// 
 				nbChoix++;
@@ -148,21 +140,17 @@ void main()
 	}
 
 	//-- appel de fct pour le calcul des segments -> A IMPLEMENTER
-	//testFct = ... 
-	Conversion_DegRad();
-	Conversion_RadDeg();
-	CalculerLongeurSegment();
-	CalculerAllAngles();
+	testFct = CalculerLongeurSegment(&Triangle);
 
 	//-- msg user - état calcul --// 
 	if (testFct == ok)
 	{
 		//-- Affichage à implémenter !!! 
-		printf("\n -> Resultats : longeur adjacent %d \n ", LongeurA);
-		printf("\n -> Resultats : longeur hypothenuse %d \n ", LongeurH);
-		printf("\n -> Resultats : longeur oppose  %d \n ", LongeurO);
-		printf("\n -> Resultats : angle alpha ");
-		printf("\n -> Resultats : angle beta  ");
+		printf("\n -> Resultats : longeur adjacent %d \n ", Triangle.triangle_s.adjacent);
+		printf("\n -> Resultats : longeur hypothenuse %d \n ", Triangle.triangle_s.hypotenuse);
+		printf("\n -> Resultats : longeur oppose  %d \n ", Triangle.triangle_s.oppose);
+		printf("\n -> Resultats : angle alpha %.2f \n", Triangle.tb_Angle[0]);
+		printf("\n -> Resultats : angle beta %.2f \n", Triangle.tb_Angle[2]);
 	}
 	else
 		printf("\n -> erreur de calcul !!!"); 
