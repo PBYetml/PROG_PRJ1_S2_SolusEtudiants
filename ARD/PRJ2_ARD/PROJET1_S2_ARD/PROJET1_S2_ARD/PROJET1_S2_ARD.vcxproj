@@ -19,11 +19,11 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\CalculTrigo.h" />
+    <ClCompile Include="FctCalculTrigo.c" />
+    <ClCompile Include="mainProjet1_s2.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\FctCalculTrigo.c" />
-    <ClCompile Include="..\..\mainProjet1_s2.c" />
+    <ClInclude Include="CalculTrigo.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

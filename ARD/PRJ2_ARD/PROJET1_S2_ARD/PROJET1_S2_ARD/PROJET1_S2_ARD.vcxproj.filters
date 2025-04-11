@@ -15,16 +15,16 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\CalculTrigo.h">
+    <ClCompile Include="FctCalculTrigo.c">
       <Filter>Fichiers sources</Filter>
-    </ClInclude>
+    </ClCompile>
+    <ClCompile Include="mainProjet1_s2.c">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\FctCalculTrigo.c">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\mainProjet1_s2.c">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
+    <ClInclude Include="CalculTrigo.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -13,16 +13,18 @@
 //-- directive préprocesseur pour supprimer certains warining --//
 #pragma warning(disable : 4996)		//-- warning concernant les scanf
 
+
 //--- librairie standart ---//
 #include <stdio.h>                  // entrée - sortie
 #include <stdlib.h>					// fonctions système 
+#include "CalculTrigo.h"
 
 //--- librairie perso ---//
 
 
 //-- déclaration de constantes --// 
-const char* ptNOM_CANDIDAT = "Philou Solus"; 
-const char VERSION_PROJET = 1; 
+const char* ptNOM_CANDIDAT = "Alexandre Rabald"; 
+const char VERSION_PROJET = 2; 
 const unsigned short ANNEE_TEST = 2025; 
 
 
@@ -43,15 +45,15 @@ void main()
 
 	//-- variable structure -> A IMPLEMENTER 
 	// triangle
-
+	str_triangleRectangle triangle;
 	//-- message utilisateur --// 
 	printf("-- TEST n%02d - annee : %d - Nom Candidat : %s --\n", VERSION_PROJET, ANNEE_TEST, ptNOM_CANDIDAT); 
 
 	//-- msg -> taille structure -> A IMPLEMENTER --// 
-	//printf("\n-> taille en memoire de la structure triangle : [o] \n", );
+	printf("\n-> taille en memoire de la structure triangle : %d[o] \n", sizeof(str_triangleRectangle));
 	
 	//-- initialisation de la structure -> A IMPLEMENTER --//
-
+	testFct = Initialiserstructure(&triangle);
 	
 	//-- msg user & selection valeur --// 
 	//-- itération -> max 2 choix possible 
@@ -83,15 +85,24 @@ void main()
 
 				//-- test de la sélection + maj structure triangle  
 				//-> adjacent
-				if (choix_AHC == adj)
+				if (choix_AHC == adj) {
+					triangle.triangle_s.adjacent = longueurSegment;
+					
+				}
 					//MAJ variable triangle -> champs : adjacent -> 
 
 				//-> hypothénuse
-				else if (choix_AHC == hyp)
+				else if (choix_AHC == hyp) {
+					triangle.triangle_s.hypotenuse = longueurSegment;
+
+				}
 					//MAJ variable triangle -> champs : hypthénuse -> A IMPLEMENTER
 					
 				//-> opposé 
-				else 
+				else {
+					triangle.triangle_s.oppose = longueurSegment;
+
+				}
 					//MAJ variable triangle -> champs : opposé  -> A IMPLEMENTER
 					
 				
@@ -116,10 +127,16 @@ void main()
 				while ((getchar() != '\n') && (getchar() != EOF));
 
 				//-- test de la sélection + maj structure triangle  
-				if (choix_AB == alpha)
+				if (choix_AB == alpha) {
+					triangle.tb_Angle[0] = angle_deg;
+
+				}
 					//-- MAJ de l'angle Alpha -> case 0 -> A IMPLEMENTER
 
-				else 
+				else {
+					triangle.tb_Angle[2] = angle_deg;
+
+				}
 					//-- MAJ de l'angle Beta -> case 2 -> A IMPLEMENTER
 
 
@@ -135,17 +152,17 @@ void main()
 	}
 
 	//-- appel de fct pour le calcul des segments -> A IMPLEMENTER
-	//testFct = ... 
+	testFct = CalculerLongueurSegment(&triangle);
 
 	//-- msg user - état calcul --// 
 	if (testFct == ok)
 	{
 		//-- Affichage à implémenter !!! 
-		printf("\n -> Resultats : longeur adjacent ");
-		printf("\n -> Resultats : longeur hypothenuse  ");
-		printf("\n -> Resultats : longeur oppose  ");
-		printf("\n -> Resultats : angle alpha ");
-		printf("\n -> Resultats : angle beta  ");
+		printf("\n -> Resultats longeur adjacent : %d ", triangle.triangle_s.adjacent);
+		printf("\n -> Resultats longeur hypothenuse : %d ", triangle.triangle_s.hypotenuse);
+		printf("\n -> Resultats longeur oppose : %d ", triangle.triangle_s.oppose);
+		printf("\n -> Resultats angle alpha : %.2f ", triangle.tb_Angle[0]);
+		printf("\n -> Resultats angle beta : %.2f ", triangle.tb_Angle[2]);
 	}
 	else
 		printf("\n -> erreur de calcul !!!"); 
